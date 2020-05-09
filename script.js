@@ -26,8 +26,8 @@ function iniciarCronometro() {
 
 function convertMin(temp) {
   var min = '' + (Math.floor(temp / 1000 / 59))
-  var sec = ((temp / 1000) % 59).toFixed(0)
-  var ms = (temp % 1000 / 10).toFixed(0)
+  var sec = '' + (Math.floor((temp / 1000) % 59))
+  var cs = '' + (temp % 1000)/10
 
   if (min.length == 1) {
     min = "0" + min
@@ -35,10 +35,10 @@ function convertMin(temp) {
   if (sec.length == 1) {
     sec = "0" + sec
   }
-  if (ms.length == 1) {
-    ms = "0" + ms
+  if (cs.length == 1) {
+    cs = "0" + cs
   }
-  return (`${min} : ${sec} : ${ms}`)
+  return (`${min}:${sec}:${cs}`)
 }
 
 function pausarCronometro() {
@@ -81,26 +81,37 @@ function salvarVolta() {
   tempoVolta.innerHTML = convertMin(voltas[voltas.length - 1] - voltaAnterior)
   tempoTotal.innerHTML = convertMin(tempoDecorrido)
 
+
+
   //definir volta mais rapida
   let voltaAtual = voltas[voltas.length - 1];
+
+
   if (voltas.length == 1) {
     voltaMaisRapida = voltas[0]
-  } else
-    if (voltaAtual - voltaAnterior < voltaMaisRapida) {
-      voltaMaisRapida = voltaAtual - voltaAnterior;
-      //console.log(`nova volta mais rapida: ${voltas.indexOf(voltaAtual) + 1} . TEMPO: ${voltaMaisRapida}`)
-      let tabela = document.getElementById("tbody");
-      for (i = 0; i < voltas.length; i++) {
-        if (tabela.rows[i].cells.length == 4) {
-          tabela.rows[i].deleteCell(3);
-        }
-      }
+    var maisRapida = row.insertCell(3)
+    maisRapida.classList.add("rapida")
+    maisRapida.innerHTML = "volta mais rapida!"
+  }
 
-      var maisRapida = row.insertCell(3)
-      maisRapida.classList.add("rapida")
-      maisRapida.innerHTML = "volta mais rapida!"
+
+  if ((voltaAtual - voltaAnterior) < voltaMaisRapida) {
+    voltaMaisRapida = voltaAtual - voltaAnterior;
+    //console.log(`nova volta mais rapida: ${voltas.indexOf(voltaAtual) + 1} . TEMPO: ${voltaMaisRapida}`)
+    let tabela = document.getElementById("tbody");
+    for (i = 0; i < voltas.length; i++) {
+      if (tabela.rows[i].cells.length == 4) {
+        tabela.rows[i].deleteCell(3);
+      }
     }
 
+    var maisRapida = row.insertCell(3)
+    maisRapida.classList.add("rapida")
+    maisRapida.innerHTML = "volta mais rapida!"
+  }
+  console.log(`volta atual: ${convertMin(voltaAtual)} (${voltaAtual})`)
+  console.log(`volta anterior: ${convertMin(voltaAnterior)} (${voltaAnterior})`)
+  console.log(`volta mais rapida: ${convertMin(voltaMaisRapida)} (${voltaMaisRapida})`)
   voltaAnterior = tempoDecorrido;
 }
 
