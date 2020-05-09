@@ -7,9 +7,9 @@ let idTemp;
 
 function iniciarCronometro() {
   var playButton = document.getElementById("play");
-  playButton.disabled = true;
+  playButton.style.display = "none";
   var pauseButton = document.getElementById("pause");
-  pauseButton.disabled = false;
+  pauseButton.style.display = "inline-flex"
   var resetButton = document.getElementById("reset");
   resetButton.disabled = false;
   document.getElementById("volta").disabled = false
@@ -27,7 +27,7 @@ function iniciarCronometro() {
 function convertMin(temp) {
   var min = '' + (Math.floor(temp / 1000 / 59))
   var sec = '' + (Math.floor((temp / 1000) % 59))
-  var cs = '' + (temp % 1000)/10
+  var ms = '' + (temp % 1000)/10
 
   if (min.length == 1) {
     min = "0" + min
@@ -35,15 +35,15 @@ function convertMin(temp) {
   if (sec.length == 1) {
     sec = "0" + sec
   }
-  if (cs.length == 1) {
-    cs = "0" + cs
+  if (ms.length == 1) {
+    ms = "0" + ms
   }
-  return (`${min}:${sec}:${cs}`)
+  return (`${min}:${sec}:${ms}`)
 }
 
 function pausarCronometro() {
-  document.getElementById("pause").disabled = true;
-  document.getElementById("play").disabled = false;
+  document.getElementById("pause").style.display = "none";
+  document.getElementById("play").style.display = "inline-flex";
 
   clearInterval(idTemp);
 }
@@ -59,7 +59,7 @@ function zerarCronometro() {
   tempoDecorridoAux = 0;
   minutos = 0;
 
-  document.getElementById("tempo").innerHTML = "00 : 00 : 00"
+  document.getElementById("tempo").innerHTML = "00:00:00"
 }
 
 
@@ -109,9 +109,9 @@ function salvarVolta() {
     maisRapida.classList.add("rapida")
     maisRapida.innerHTML = "volta mais rapida!"
   }
-  console.log(`volta atual: ${convertMin(voltaAtual)} (${voltaAtual})`)
-  console.log(`volta anterior: ${convertMin(voltaAnterior)} (${voltaAnterior})`)
-  console.log(`volta mais rapida: ${convertMin(voltaMaisRapida)} (${voltaMaisRapida})`)
+  // console.log(`volta atual: ${convertMin(voltaAtual)} (${voltaAtual})`)
+  // console.log(`volta anterior: ${convertMin(voltaAnterior)} (${voltaAnterior})`)
+  // console.log(`volta mais rapida: ${convertMin(voltaMaisRapida)} (${voltaMaisRapida})`)
   voltaAnterior = tempoDecorrido;
 }
 

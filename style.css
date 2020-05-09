@@ -3,11 +3,12 @@
 }
 .btn1{
   margin-top: 120px;
+  margin-left: 30px;
 }
+
 #tabela {
   border-collapse: collapse;
-  margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 50px;
   text-align: center;
 }
 #tabela tr:nth-child(even){
@@ -33,13 +34,24 @@
   position: absolute;
   left: 45px;
 }
+
 #tempo{
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   text-decoration:underline #0d1323;
   position:relative;
   top: 65px;
+  left: 70px;
+}
+
+@-moz-document url-prefix(){
+  #tempo{
+  font-size: 13px;
   left: 68px;
+  }
+}
+#pause{
+  display: none;
 }
 
 button{
@@ -48,3 +60,6 @@ button{
   display:inline-flex;
   justify-content: center;
 } 
+#volta{
+  width: 130px;
+}
