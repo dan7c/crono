@@ -1,0 +1,50 @@
+.col{
+  display: flex;
+}
+.btn1{
+  margin-top: 120px;
+}
+#tabela {
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-left: 20px;
+  text-align: center;
+}
+#tabela tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+#tabela thead{
+  background-color: #0d1323;
+  color: #ffffff;
+}
+#tabela td{
+  width: auto;
+  padding: 4px 10px;
+  border: 1px solid #0d1323;
+}
+#tabela .rapida{
+  background-color: #0d1323;
+  color: #fff;
+  border: none;
+  width: auto;
+}
+
+#img{
+  position: absolute;
+  left: 45px;
+}
+#tempo{
+  font-size: 10px;
+  font-weight: bold;
+  text-decoration:underline #0d1323;
+  position:relative;
+  top: 65px;
+  left: 68px;
+}
+
+button{
+  margin: 3px;
+  width: 60px;
+  display:inline-flex;
+  justify-content: center;
+} 

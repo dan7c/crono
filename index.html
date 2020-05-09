@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Cronometro</title>
+
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="script.js">
+
+	</script>
+</head>
+
+<body>
+	<img src="crono.png" width="125px" height="125px" id="img"/>
+  <div id="tempo">
+      00 : 00 : 00
+  </div>
+
+      <div class="col">
+        <div class="btn1">
+          <button id="play" onclick="iniciarCronometro();">Iniciar</button>
+          <button id="pause" onclick="pausarCronometro();" disabled="true">Pausar</button>
+          <button id="reset" onclick="zerarCronometro();" disabled="true">Reset</button>
+        <div class="btn2">
+          <button id="volta" onclick="salvarVolta();" disabled="true">Salvar Volta</button>
+        </div>
+        </div>
+
+        <table id="tabela">
+          <thead>
+            <td>Volta</td>
+            <td>Tempo da volta</td>
+            <td>Tempo total</td>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+
+        </table>
+      </div>
+  </body>
+</html>
